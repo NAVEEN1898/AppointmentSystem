@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-	def signup
-    user = User.new(email: params[:email], password: params[:password], user_type: params[:user_type] )
+  def signup
+    user = User.new(email: params[:email], password: params[:password], user_type: params[:user_type])
 
     # if user is saved
     if user.save
@@ -11,13 +11,12 @@ class SessionsController < ApplicationController
       render json: { token: token }
     else
       # render error message
-      render json: { message: "invalid credentials" }
+      render json: { message: 'invalid credentials' }
     end
   end
 
   def login
     user = User.find_by(email: params[:email])
-
     # you can use bcrypt to password authentication
     if user && user.password == params[:password]
 
@@ -27,7 +26,7 @@ class SessionsController < ApplicationController
       # return to user
       render json: { token: token }
     else
-      render json: { message: "invalid credentials" }
+      render json: { message: 'invalid credentials' }
     end
   end
 end
