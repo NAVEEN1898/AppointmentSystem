@@ -6,7 +6,7 @@ module Api
       before_action :authentication
       def index
         @users = User.where(user_type: 'counsellar')
-        render json: @users
+        render json: @users, status:200
       end
 
       def create
